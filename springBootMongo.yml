@@ -39,6 +39,7 @@ spec:
   resources:
     requests:
       storage: 100Mi
+  volumeName: pv-hostpath
 
 ---
 ## Spring Boot App
