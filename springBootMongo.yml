@@ -27,6 +27,7 @@ spec:
   - ReadWriteOnce
   hostPath:
     path: "/tmp/mongodata"
+    type: DirectoryOrCreate
 ---
 apiVersion: v1
 kind: PersistentVolumeClaim
