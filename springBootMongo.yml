@@ -21,7 +21,6 @@ kind: PersistentVolume
 metadata:
   name: pv-hostpath
 spec:
-  storageClassName: manual
   capacity:
     storage: 1Gi
   accessModes:
@@ -34,7 +33,6 @@ kind: PersistentVolumeClaim
 metadata:
   name: pvc-hostpath
 spec:
-  storageClassName: manual
   accessModes:
   - ReadWriteOnce
   resources:
