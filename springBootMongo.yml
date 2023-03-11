@@ -1,16 +1,16 @@
 kind: ConfigMap
 apiVersion: v1
 metadata:
-  name: springapp-configmap
+  name: springappconfigmap
 data:
-  username: ahazimeh94
+  username: springapp
   password: mongodb@123
 
 ---
 apiVersion: v1
 kind: Secret
 metadata:
-  name: springapp-secrets
+  name: springappsecrets
 type: Opaque
 stringData:   # We can define multiple key value pairs.
   password: devdb@123
@@ -46,7 +46,7 @@ spec:
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: springapp-deployment
+  name: springappdeployment
 spec:
   replicas: 2
   selector:
@@ -60,19 +60,19 @@ spec:
     spec:
       containers:
       - name: springappcontainer
-        image: simplilearn/spring-boot-mongo
+        image: dockerhandson/spring-boot-mongo
         ports:
         - containerPort: 8080
         env:
         - name: MONGO_DB_USERNAME
           valueFrom:
             configMapKeyRef:
-              name: springapp-configmap
+              name: springappconfigmap
               key: username
         - name: MONGO_DB_PASSWORD
           valueFrom:
             secretKeyRef:
-              name: springapp-secrets
+              name: springappsecrets
               key: password
         - name: MONGO_DB_HOSTNAME
           value: mongo
@@ -117,12 +117,12 @@ spec:
          - name: MONGO_INITDB_ROOT_USERNAME
            valueFrom:
              configMapKeyRef:
-               name: springapp-configmap
+               name: springappconfigmap
                key: username
          - name: MONGO_INITDB_ROOT_PASSWORD
            valueFrom:
              secretKeyRef:
-               name: springapp-secrets
+               name: springappsecrets
                key: password
          volumeMounts:
          - name: mongodb-pvc

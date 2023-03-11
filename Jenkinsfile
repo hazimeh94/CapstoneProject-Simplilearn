@@ -13,14 +13,14 @@ node{
     
     
     stage('Build Docker Image'){
-        sh 'docker build -t simplilearn/spring-boot-mongo .'
+        sh 'docker build -t ahazimeh94/spring-boot-mongo .'
     }
     
     stage('Push Docker Image'){
         withCredentials([string(credentialsId: 'DOCKER_HUB_CREDENTIALS', variable: 'DOCKER_HUB_CREDENTIALS')]) {
           sh "docker login -u ahazimeh94 -p ${DOCKER_HUB_CREDENTIALS}"
         }
-        sh 'docker push simplilearn/spring-boot-mongo'
+        sh 'docker push ahazimeh94/spring-boot-mongo'
      }
      
      stage("Deploy To Kuberates Cluster"){
