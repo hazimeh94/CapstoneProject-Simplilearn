@@ -9,6 +9,7 @@
 		<version>2.1.5.RELEASE</version>
 		<relativePath />
 		<!-- lookup parent from repository -->
+		<!-- lookup parent from repository -->
 	</parent>
 	<groupId>com.mt</groupId>
 	<artifactId>spring-boot-mongo</artifactId>
